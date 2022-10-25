@@ -1,6 +1,9 @@
+package ru.netology;
+
 import org.junit.jupiter.api.Assertions;
 import org.testng.annotations.Test;
 
+import ru.netology.NotFoundException;
 import ru.netology.Product;
 import ru.netology.ProductRepository;
 
@@ -10,7 +13,7 @@ Product index2 = new Product(11, "Телефон", 2000);
 Product index3 = new Product(12, "Книга", 1500);
 
   @Test
-    public void test1() {
+    public void testAddProducts() {
       ProductRepository repo = new ProductRepository();
       repo.save(index1);
       repo.save(index2);
@@ -23,12 +26,12 @@ Product index3 = new Product(12, "Книга", 1500);
     }
 
   @Test
-  public void test2() {
+  public void testDeleteProducts() {
     ProductRepository repo = new ProductRepository();
     repo.save(index1);
     repo.save(index2);
     repo.save(index3);
-    repo.removal(index3.getId());
+    repo.removeById(index3.getId());
 
     Product[] expected = {index1, index2};
     Product[] actual = repo.getProducts();
@@ -36,4 +39,17 @@ Product index3 = new Product(12, "Книга", 1500);
     Assertions.assertArrayEquals(expected, actual);
   }
 
+  @Test
+  public void testNotFoundException() {
+    ProductRepository repo = new ProductRepository();
+    repo.save(index1);
+    repo.save(index2);
+    repo.save(index3);
+
+
+    Assertions.assertThrows(NotFoundException.class,
+            () -> {
+      repo.removeById(4);
+            });
+  }
 }

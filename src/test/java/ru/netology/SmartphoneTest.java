@@ -9,7 +9,7 @@ public class SmartphoneTest {
     Smartphone index3 = new Smartphone(12, "Телефон", 15000, "A13 4/64 ", "Samsung Galaxy");
 
     @Test
-    public void test1() {
+    public void testAddProducts() {
         SmartphoneRepository repo = new SmartphoneRepository();
         repo.saveSmartphone(index1);
         repo.saveSmartphone(index2);
@@ -22,7 +22,7 @@ public class SmartphoneTest {
     }
 
     @Test
-    public void test2() {
+    public void testDeleteProducts() {
         SmartphoneRepository repo = new SmartphoneRepository();
         repo.saveSmartphone(index1);
         repo.saveSmartphone(index2);
