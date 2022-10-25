@@ -12,7 +12,10 @@ public class ProductRepository {
         products = extra;
     }
 
-    public void removal(int id) {
+    public void removeById(int id) {
+        if (findById(id) == null) {
+            throw new NotFoundException(id);
+        }
         Product[] extra = new Product[products.length - 1];
         int copyToIndex = 0;
         for (Product growth : products) {
@@ -22,6 +25,14 @@ public class ProductRepository {
             }
         }
         products = extra;
+    }
+    public Product findById(int id) {
+        for (Product product : products) {
+            if (product.getId() == id) {
+                return product;
+            }
+        }
+        return null;
     }
 
     public Product[] getProducts() {

@@ -9,7 +9,7 @@ public class BookTest {
     Book index3 = new Book(12, "Книга", 1500, "Роман", "Михаил Красновский");
 
     @Test
-    public void test1() {
+    public void testAddProducts() {
         BookRepository repo = new BookRepository();
         repo.saveBook(index1);
         repo.saveBook(index2);
@@ -22,7 +22,7 @@ public class BookTest {
     }
 
     @Test
-    public void test2() {
+    public void testDeleteProducts() {
         BookRepository repo = new BookRepository();
         repo.saveBook(index1);
         repo.saveBook(index2);
